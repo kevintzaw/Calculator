@@ -47,6 +47,7 @@ function Handle_Operator(Next_Operator) {
     //checks if an operator already exists and if Wait_Second_Operand is true,
     //then updates the operator and exists from the function
     if (operator && Calculator.Wait_Second_Operand) {
+        Calculator.operator = Next_Operator;
         return;
     }
     if (First_Operand == null) {
@@ -107,6 +108,13 @@ keys.addEventListener('click',(event)=> {
     }
 
     if (target.classList.contains('decimal')) {
+        Calculator_Reset();
+        Update_Display();
+        return;
+    }
+
+    //ensures that AC clears the numbers from the Calculator
+    if (target.classList.contains('all-clear')){
         Calculator_Reset();
         Update_Display();
         return;
